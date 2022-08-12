@@ -236,6 +236,7 @@ module.exports = {
     sendQuestions,
     questions,
     score,
-    trivia
+    trivia,
+    validate
 
 }
