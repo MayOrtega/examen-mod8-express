@@ -141,7 +141,7 @@ const score = (req, res) => {
     res.render("Socore")
 }
 
-const trivia = async(res, res) => {
+const trivia = async(req, res) => {
     const goodAnswer = req.body;
     const badAnswer1 = req.body.incorrectAnswer1;
     const badAnswer2 = req.body.incorrectAnswer2
