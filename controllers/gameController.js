@@ -1,11 +1,11 @@
 const firebase = require('../db');
 const Login = require('../models/login');
-const Questions = require ('../models/questions');
-const Answers = require ('../models/answers');
+const Questions = require('../models/questions');
+const Answers = require('../models/answers');
 const firestore = firebase.firestore();
-const express = express.Router();
-const bodyParser = require ('body-parser');
-const { response } = require('express');
+const express = require('express');
+const router = express.Router();
+const bodyParser = require("body-parser");
 
 router.use(bodyParser.urlencoded({ extended: false}));
 router.use(bodyParser.json());
@@ -17,12 +17,12 @@ const login = async(req, res) => {
 
 //Mostrar página de error
 const notFound = async (req, res) => {
-    res.render("notFound", {mensaje: 'Ocurrió algo inesperado'})
+    res.render("notFound", {mensaje: ''})
 }
 
 //Mostrar página principal
 const main = async (req, res) => {
-    res.render("notFound", {mensaje: ' '}) 
+    res.render("main", {mensaje: ' '}) 
 }
 
 //Mostrar página agregar pregunta
@@ -33,7 +33,7 @@ const addquestion = async (req, res) => {
 //Mostrar página de registro
 const register = async (req, res) => {
     console.log('Registro')
-    res.render('registro')
+    res.render('register')
 }
 
 //Mostrar trivia
@@ -44,7 +44,7 @@ res.render('trivia')
 //Logueo de usuario
 const loggedIn = async (req, res) => {
     console.log('logueo ok');
-    const logged = await firestore.collection("userLogin");
+    const logged = await 8081.collection("userLogin");
     const data = await logged.get(); {
         if(data.empty){
             res.render('notFound', { message: 'No encontrado'})
@@ -62,7 +62,7 @@ const loggedIn = async (req, res) => {
                     res.render('main', {mensaje: 'User: ' + item.data().user})
                 }
                 if((enterName == '') || (enterPassword == '')){
-                    res.render('notFound', {mensaje: 'Incorrect user or password'})
+                    res.render('*', {mensaje: 'Incorrect user or password'})
                 } 
 
              }
@@ -232,7 +232,8 @@ module.exports = {
     register,
     trivias,
     loggedIn,
-     registered,
+    registered,
+    register,
     sendQuestions,
     questions,
     score,

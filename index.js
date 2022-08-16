@@ -21,7 +21,7 @@ app.use('/web', gameRoutes.routes);
  
 // Levanta servidor
 app.listen(config.port, () => {
-    console.info('server listening on port 8080');
+    console.info('server listening on port 8081');
 })
  
  
