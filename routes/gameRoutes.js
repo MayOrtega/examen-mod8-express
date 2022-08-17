@@ -25,7 +25,7 @@ router.get('/register', register);
 router.get('/trivias', trivias);
 router.post('/loggedIn', loggedIn);
 router.get('/registered', registered);
-router.get('/sendQuestions', sendQuestions);
+router.post('/sendQuestions', sendQuestions);
 router.get('/questions', questions);
 router.get('/score', score);
 router.get('/trivia', trivia);

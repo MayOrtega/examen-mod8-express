@@ -1,10 +1,10 @@
-class Preguntas {
-    constructor(agregarPregunta, respuestaCorrecta, respuestaFalsa1, respuestaFalsa2) {
-        this.agregarPregunta = agregarPregunta;
-        this.respuestaCorrecta = respuestaCorrecta;
-        this.respuestaFalsa1 = respuestaFalsa1;
-        this.respuestaFalsa2 = respuestaFalsa2;
+class Questions {
+    constructor(addquestion1, correctAnswer, incorrectAnswer1, incorrectAnswer2) {
+        this.addquestion1 = addquestion1;
+        this.correctAnswer = correctAnswer;
+        this.incorrectAnswer1 = incorrectAnswer1;
+        this.incorrectAnswer2 = incorrectAnswer2;
     }
 }
  
-module.exports = Preguntas;
+module.exports = Questions;

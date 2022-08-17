@@ -1,7 +1,7 @@
 const firebase = require('../db');
-const Login = require('../models/login');
-const Questions = require('../models/questions');
-const Answers = require('../models/answers');
+const Login = require('../models/Login');
+const Questions = require('../models/Questions');
+const Answers = require('../models/Answers');
 const firestore = firebase.firestore();
 const express = require('express');
 const router = express.Router();
@@ -27,7 +27,7 @@ const main = async (req, res) => {
 
 //Mostrar página agregar pregunta
 const addquestion = async (req, res) => {
-
+   res.render('addquestion')
 }
 
 //Mostrar página de register
@@ -89,7 +89,7 @@ const loggedIn = async (req, res) => {
             try{
                 const datos = req.body;
                    await firestore.collection("questions").doc().set(datos);
-                   res.render("succes",{ mensaje: "the question has been registered successfully" })
+                   res.render("success",{ mensaje: "the question has been registered successfully" })
             
         }catch(error){
             res.render("notFound", {mensaje: "question not entered"})
@@ -106,7 +106,7 @@ const questions = async (req, res) => {
     } else {
          await data.forEach((item) => {
             const result1 = new Questions(
-                item.data().addquestion,
+                item.data().addquestion1,
                 item.data().correctAnswer,
                 item.data().incorrectAnswer1,
                 item.data().incorrectAnswer2,
@@ -120,13 +120,13 @@ const questions = async (req, res) => {
    arrayQuestions.sort(() => Math.random() -0.5)
    const result2 = await arrayQuestions[Math.floor(Math.random() * arrayQuestions.length)]
    const object = {
-    question: result2.addquestion,
+    question: result2.addquestion1,
     question2: result2.correctAnswer,
     question3: result2.incorrectAnswer1,
     question4: result2.incorrectAnswer2
    }
    res.render('main', {
-    question: result2.addquestion,
+    question: result2.addquestion1,
     question2: result2.correctAnswer,
     question3: result2.incorrectAnswer1,
     question4: result2.incorrectAnswer2
@@ -154,7 +154,7 @@ const trivia = async(req, res) => {
     } else {
         await data.forEach(() => {
              const result1 = Questions(
-                item.data().addquestion,
+                item.data().addquestion1,
                 item.data().correctAnswer,
                 item.data().incorrectAnswer1,
                 item.data().incorrectAnswer2
@@ -172,19 +172,19 @@ const trivia = async(req, res) => {
     const result5 = await arrayQuestions[Math.floor(Math.random() * arrayQuestions.length)]
 
     res.render('trivia', {
-        question: result2.addquestion,
+        question: result2.addquestion1,
         correctAnswer: result2.correctAnswer,
         incorrectAnswer1: result2.incorrectAnswer1,
         incorrectAnswer2: result2.incorrectAnswer2,
-        question2: result3.addquestion,
+        question2: result3.addquestion1,
         correctAnswer2: result3.correctAnswer,
         incorrectAnswer22: result3.incorrectAnswer1,
         incorrectAnswer22: result3.incorrectAnswer2,
-        question3: result4.addquestion,
+        question3: result4.addquestion1,
         correctAnswer3: result4.correctAnswer,
         incorrectAnswer33: result3.incorrectAnswer1,
         incorrectAnswer33: result3.incorrectAnswer2,
-        question4: result5.addquestion,
+        question4: result5.addquestion1,
         correctAnswer4: result5.correctAnswer,
         incorrectAnswer44: result5.incorrectAnswer1,
         incorrectAnswer44: result5.incorrectAnswer2,
