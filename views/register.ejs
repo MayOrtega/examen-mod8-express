@@ -1,7 +1,37 @@
 <%- include("./template/header.ejs", {title: 'Registro de usuario'}) %>
 
-<div class="container"></div>
-<br>
-<center>
-    <p class="title">Registro de Usuario</p>
-</center>
+<div class="container">
+    <br>
+    <center>
+      <p class="h1" style="background-color: white; opacity:0.8; border-radius:10px; padding:1%; width:50%;">Registro de Usuario</p>
+    </center>
+    <br>
+    <center>
+      <form action="register" method="post">
+        <div class="form-outline mb-4">
+          <input type="text" id="form2Example1" name="user" placeholder="Ingresar Usuario" autofocus
+            class="form-control" style="width : 300px; border: solid black 3px;"/>
+        </div>
+        <div class="form-outline mb-4">
+          <input type="password" id="form2Example2" name="password" placeholder="Ingresar Contraseña"
+            class="form-control" style="width : 300px; border: solid black 3px;"/>
+        </div>
+        <div class="form-outline mb-4">
+          <input type="hidden" id="form2Example2" name="es_admin" value="1" class="form-control" style="width : 300px; border: solid black 3px;"/>
+        </div>
+        <div class="row mb-4">
+          <div class="col d-flex justify-content-center">
+            <div class="form-check">
+            </div>
+          </div>
+          <div class="col">
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block mb-4">Registrar</button>
+        <div class="text-center" style="background-color: black; opacity:0.8; color:white; font-size:1.4rem; width: 60%;">
+          <p>¿Ya tienes cuenta? <a href="/web/login">Inicia aquí</a></p>
+        </div>
+      </form>
+  </div>
+  </center>
+  <%- include("template/footer") %>

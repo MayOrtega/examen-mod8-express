@@ -8,7 +8,6 @@ const {
     trivias,
     loggedIn,
     registered,
-    register,
     sendQuestions,
     questions,
     score,
@@ -20,18 +19,18 @@ const router = express.Router()
 //Rutas
 
 router.get('/login', login);
-router.get('/*', notFound);
 router.get('/main', main);
 router.get('/addquestion', addquestion);
 router.get('/register', register);
 router.get('/trivias', trivias);
-router.get('/loggedIn', loggedIn);
+router.post('/loggedIn', loggedIn);
 router.get('/registered', registered);
 router.get('/sendQuestions', sendQuestions);
 router.get('/questions', questions);
 router.get('/score', score);
 router.get('/trivia', trivia);
 router.get('/validate', validate);
+router.get('/*', notFound);
 
 module.exports = {
      routes: router

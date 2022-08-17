@@ -22,7 +22,7 @@ const notFound = async (req, res) => {
 
 //Mostrar página principal
 const main = async (req, res) => {
-    res.render("main", {mensaje: ' '}) 
+    res.render("main") 
 }
 
 //Mostrar página agregar pregunta
@@ -30,9 +30,9 @@ const addquestion = async (req, res) => {
 
 }
 
-//Mostrar página de registro
+//Mostrar página de register
 const register = async (req, res) => {
-    console.log('Registro')
+    console.log('register')
     res.render('register')
 }
 
@@ -41,10 +41,10 @@ const trivias = async(req,res) => {
 res.render('trivia')
 }
 
-//Logueo de usuario
+//logged de usuario
 const loggedIn = async (req, res) => {
-    console.log('logueo ok');
-    const logged = await 8081.collection("userLogin");
+    console.log('logged ok');
+    const logged = await firestore.collection("userLogin");
     const data = await logged.get(); {
         if(data.empty){
             res.render('notFound', { message: 'No encontrado'})
@@ -97,8 +97,8 @@ const loggedIn = async (req, res) => {
     }
 const questions = async (req, res) => {
     const correctAnswer = req.body.correctAnswer;
-    const logueo = await firestore.collection("questions");
-    const data = await logueo.get();
+    const logged = await firestore.collection("questions");
+    const data = await logged.get();
     const arrayQuestions = [];
 
     if(data.empty){
@@ -145,8 +145,8 @@ const trivia = async(req, res) => {
     const goodAnswer = req.body;
     const badAnswer1 = req.body.incorrectAnswer1;
     const badAnswer2 = req.body.incorrectAnswer2
-    var logueo = await firestore.collection("questions");
-    var data = await logueo.get();
+    var logged = await firestore.collection("questions");
+    var data = await logged.get();
     const arrayQuestions = [];
 
     if(data.empty) {
@@ -196,8 +196,8 @@ const validate = async (req, res) => {
     const goodAnswer = req.body;
 try{
     await firestore.collection("correctAnswers").doc().set(goodAnswer);
-    const logueo = await firestore.collection("correctAnswers");
-    const data = await logueo.get();
+    const logged = await firestore.collection("correctAnswers");
+    const data = await logged.get();
     const arrayQuestions2 = [];
     if(data.empty){
         response.status(200).json({ message: "Not found"})
